@@ -1,0 +1,15 @@
+//By Matías Yañez Lenzano
+
+void setup() {
+ Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available()>0){
+    String es = Serial.readString();
+      if(es=="hola"){
+    Serial.print("¿Cómo estás?");}
+      else if(es=!"hola"){
+      }
+  }
+}
