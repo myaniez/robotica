@@ -1,0 +1,42 @@
+/*Diseñar un robot que detecte cuando comience a lavar las manos,
+encienda una luz roja, y pasados 20 segundos prenda una luz verde.
+
+Bonus (doble de puntaje): si se sacan las manos antes de los 20 segundos,
+el led rojo comienza a parpadear.*/
+
+#include <Ultrasonic.h>
+#define rojo 5
+#define verde 6
+int distancia=0;
+
+Ultrasonic ultrasonic(9, 8); // (Trig PIN,Echo PIN)
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(rojo, OUTPUT);
+  pinMode(verde, OUTPUT);
+}
+
+
+
+void loop()
+{
+  distancia = ultrasonic.Ranging(CM);
+  if(distancia<10){
+    digitalWrite(rojo, HIGH);
+    delay(15000);
+    digitalWrite(rojo,LOW);
+    
+      for (int i=0; i<=5;i++){
+        digitalWrite(rojo,HIGH);
+        delay(1000);
+        digitalWrite(rojo,LOW);
+        delay(1000);  
+        i = i + 1;}
+    
+    digitalWrite(verde, HIGH);
+    delay(5000);
+    digitalWrite(verde, LOW);
+  }
+  
+}
